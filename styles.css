@@ -1216,3 +1216,13 @@ body.light-mode {
 .light-mode #education .bg-slate-900\/70 {
     background: rgba(15, 23, 42, 0.16) !important;
 }
+
+.light-mode #education .bg-gradient-to-br.from-cyan-600.via-cyan-700.to-purple-800 .bg-slate-900\/70 {
+    background: rgba(15, 23, 42, 0.38) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.light-mode #education .fa-trophy {
+    color: #ffffff !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
