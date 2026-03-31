@@ -1,6 +1,35 @@
 // Update year in footer
 document.getElementById('yearSpan').textContent = new Date().getFullYear();
 
+// Theme toggle functionality
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to 'dark'
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Apply saved theme on page load
+function applyTheme(theme) {
+    if (theme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggleBtn.innerHTML = '<i class="fas fa-sun text-lg"></i>';
+    } else {
+        document.body.classList.remove('light-mode');
+        themeToggleBtn.innerHTML = '<i class="fas fa-moon text-lg"></i>';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+// Apply saved theme on load
+applyTheme(savedTheme);
+
+// Toggle theme on button click
+themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+});
+
 // Navbar scroll behavior
 const navbar = document.getElementById('navbar');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -37,6 +66,8 @@ window.addEventListener('scroll', () => {
 
 // Scroll to top button
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
